@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<div class="my-3 p-3 bg-white rounded box-shadow">
+		<h6 class="border-bottom border-gray pb-2 mb-0">Search Vehicle</h6>
+		<div class="media text-muted pt-3">
+			<div id="srcProducer" class="col-md-4 mb-3">
+				<label for="producer">Producer</label>
+				<select id="producer" class="custom-select d-block w-100" id="producer" required="">
+					<option value="">Choose...</option>
+					{% for vehicle in vehicles %}
+						<option value="{{vehicle.producer}}">{{vehicle.producer}}</option>
+					{% endfor %}
+				</select>
+				<div class="invalid-feedback">
+					Please select a producer.
+				</div>
+			</div>
+			<div id="srcModel" class="col-md-4 mb-3">
+				<label id="labelModel" for="state" style="display: none;">Model</label>
+				<div id="model"></div>
+				<div class="invalid-feedback">
+					Please provide a valid state.
+				</div>
+			</div>
+			<div id="srcYear" class="col-md-4 mb-3">
+				<label id="labelYear" for="state" style="display: none;">Year</label>
+				<div id="year"></div>
+				<div class="invalid-feedback">
+					Please provide a valid state.
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="my-3 p-3 bg-white rounded box-shadow">
+		<h6 class="border-bottom border-gray pb-2 mb-0">Result</h6>
+		<div class="media text-muted pt-3">
+
+		</div>
+			<div id="parts">Record not Found</div>
+	</div>
+{% endblock %}
+
+{% block javaScript %}
+	{{ parent() }}
+	<script src="{{ asset('../assets/js/myJs.js') }}"></script>
+{% endblock %}
